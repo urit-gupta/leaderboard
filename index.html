@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link id="site-icon" rel="icon" type="image/png" sizes="32x32" href="" />
+
+    <title id="html-title">Leaderboard</title>
+
+    <!-- Google Fonts Barlow -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Load Styles and Script -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site_title_container">
+      <h1 class="site_title">Leaderboard</h1>
+    </header>
+
+    <main>
+      <div class="leaderboard_container">
+        <div id="leaderboard" class="leaderboard">
+          <rank>Rank</rank>
+          <player>Player</player>
+          <games>Games</games>
+          <wins>Wins</wins>
+          <points>Points</points>
+          <issued>Issued</issued>
+          <issued_won>Issued Won</issued_won>
+          <accepted>Accepted </accepted>
+          <accepted_won>Accepted Won</accepted_won>
+        </div>
+      </div>
+    </main>
+    <script>
+      async function fetchCSV(url) {
+        try {
+          const response = await fetch(url,
+            {
+              method: 'POST',
+              mode: 'cors',
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'content-type',
+                'content-type': 'text/csv;charset=UTF-8'
+              }
+            }
+          );
+          const data = await response.text();
+          var leaderboard = document.getElementById("leaderboard");
+          console.log(data);
+          leaderboard.innerHTML += `<rank>${data[1][0]}</rank>
+          <player>${data[1][1]}</player>`;
+        } catch (error) {
+          console.error('Error fetching CSV:', error);
+        }
+      }
+      // fetchCSV("https://docs.google.com/spreadsheets/d/1KpAJJPZzuO3pFJ8JHoRTXkVicP0IbRwtPBmjv7eJbZc/gviz/tq?tqx=out:csv&sheet=leaderboard");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+:root{
+  --font-barlow:"Barlow"
+}
+
+html {
+  background-color: black;
+}
+
+.site_title_container {
+  display: block;
+}
+
+.site_title {
+  font-family: var(--font-barlow);
+  font-size: 32pt;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+}
+
+.leaderboard_container {
+  padding: 2% 4%;
+  width: 92%;
+  height: 96%;
+  display: block;
+  justify-content: center;
+}
+
+.leaderboard {
+  font-family: var(--font-barlow);
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  display: grid;
+  grid-template-columns: 0.5fr 2.5fr 1fr 1fr 1fr 1fr 1.5fr 1fr 1.5fr;
+  justify-content: space-evenly;
+  text-wrap: nowrap;
+  gap: 16px;
+  font-size: 18pt;
+
+  & rank {
+    grid-column: 1;
+  }
+
+  & player {
+    grid-column: 2;
+  }
+
+  & games {
+    grid-column: 3;
+  }
+
+  & wins {
+    grid-column: 4;
+  }
+
+  & points {
+    grid-column: 5;
+  }
+
+  & issued {
+    grid-column: 6;
+  }
+
+  & issued_won {
+    grid-column: 7;
+  }
+
+  & accepted {
+    grid-column: 8;
+  }
+
+  & accepted_won {
+    grid-column: 9;
+  }
+}
